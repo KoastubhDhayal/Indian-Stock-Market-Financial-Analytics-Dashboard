@@ -1,0 +1,298 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║       INDIAN STOCK MARKET ANALYTICS DASHBOARD                               ║
+║       AI-Powered Financial Analysis with FinBERT Integration                ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📦 PROJECT CONTENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+📁 indian-stock-analytics/
+│
+├── 📄 QUICKSTART.md (8.2 KB)
+│   └── Quick setup guide - Start here!
+│
+├── 📄 README.md (11 KB)
+│   └── Complete documentation with examples and deployment guide
+│
+├── 📄 FINBERT_GUIDE.md (14 KB)
+│   └── FinBERT sentiment analysis integration guide
+│
+├── 🐍 stock_backend.py (25 KB)
+│   └── Core analytics engine: ML predictions, technical indicators
+│
+├── 🐍 finbert_integration.py (25 KB)
+│   └── FinBERT sentiment analysis: news, social media, trading signals
+│
+├── 🐍 api_server.py (17 KB)
+│   └── Flask REST API server with all endpoints
+│
+├── 🐍 config.py (5.5 KB)
+│   └── Configuration management and environment settings
+│
+├── ⚛️ indian_stock_dashboard.jsx (15 KB)
+│   └── React dashboard UI with real-time charts
+│
+├── 📋 requirements.txt (873 bytes)
+│   └── Python dependencies list
+│
+├── 🔧 .env.example (1.5 KB)
+│   └── Environment variables template
+│
+└── 🚀 start.sh (2.5 KB)
+    └── Quick start script (run this first!)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 KEY FEATURES
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Real-Time Data          Live NSE/BSE prices, 5-second updates
+✅ ML Predictions          LSTM + ensemble models for forecasting  
+✅ FinBERT Sentiment       AI news & social media analysis
+✅ Technical Analysis      RSI, MACD, Bollinger Bands, Stochastic
+✅ Investment Advice       Smart BUY/SELL/HOLD recommendations
+✅ Risk Management         Stop-loss, take-profit, position sizing
+✅ Portfolio Tracking      Multi-stock watchlist
+✅ RESTful API             Easy frontend integration
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 QUICK START (3 STEPS)
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  Extract the archive:
+    tar -xzf indian-stock-analytics.tar.gz
+    cd indian-stock-analytics
+
+2️⃣  Install dependencies:
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+
+3️⃣  Start the server:
+    ./start.sh
+    
+    Or manually:
+    python3 api_server.py
+
+🌐 Access API at: http://localhost:5000
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📡 API ENDPOINTS
+═══════════════════════════════════════════════════════════════════════════════
+
+GET  /api/health                           Health check
+GET  /api/stock/{symbol}                   Live stock data
+GET  /api/stock/{symbol}/historical        Historical data
+GET  /api/stock/{symbol}/indicators        Technical indicators
+GET  /api/stock/{symbol}/prediction        ML price prediction
+GET  /api/stock/{symbol}/sentiment         FinBERT sentiment analysis ⭐
+GET  /api/stock/{symbol}/recommendation    Investment recommendation
+GET  /api/stock/{symbol}/complete          Complete analysis
+POST /api/stocks/batch                     Multiple stocks at once
+GET  /api/watchlist                        Popular stocks list
+GET  /api/sectors                          Sector-wise stocks
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔑 TECHNOLOGY STACK
+═══════════════════════════════════════════════════════════════════════════════
+
+Backend:        Python 3.8+, Flask, pandas, numpy
+ML/AI:          scikit-learn, TensorFlow, FinBERT (transformers)
+NLP:            FinBERT (ProsusAI), PyTorch, HuggingFace Transformers
+Data Sources:   yfinance (Yahoo Finance), nsepy (NSE India)
+Frontend:       React 18+, Recharts, Tailwind CSS, Lucide Icons
+Caching:        Redis (optional)
+Database:       PostgreSQL (optional)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎓 WHAT IS FINBERT?
+═══════════════════════════════════════════════════════════════════════════════
+
+FinBERT is a pre-trained NLP model specifically fine-tuned for financial 
+sentiment analysis. It's based on BERT and achieves 94% accuracy on financial
+texts.
+
+Key Capabilities:
+• Analyzes news headlines and articles
+• Monitors social media sentiment (Twitter, Reddit)
+• Classifies text as Positive/Negative/Neutral
+• Provides confidence scores
+• Detects sentiment momentum (improving/deteriorating)
+• Generates trading signals from sentiment
+
+Example:
+Input:  "Company reports record profits, stock soars"
+Output: POSITIVE (92% confidence)
+
+Input:  "CEO resigns amid scandal, investors concerned"  
+Output: NEGATIVE (88% confidence)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 EXAMPLE USAGE
+═══════════════════════════════════════════════════════════════════════════════
+
+Python:
+    import requests
+    
+    response = requests.get('http://localhost:5000/api/stock/RELIANCE/complete')
+    data = response.json()
+    
+    print(f"Price: ₹{data['data']['current']['price']}")
+    print(f"Action: {data['data']['recommendation']['action']}")
+    print(f"Sentiment: {data['data']['sentiment']['overall']['overall_sentiment']}")
+
+cURL:
+    curl "http://localhost:5000/api/stock/TCS/sentiment?days=7"
+
+JavaScript:
+    fetch('http://localhost:5000/api/stock/RELIANCE/recommendation')
+      .then(res => res.json())
+      .then(data => console.log(data));
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📈 SUPPORTED STOCKS
+═══════════════════════════════════════════════════════════════════════════════
+
+Nifty 50:   RELIANCE, TCS, HDFCBANK, INFY, ICICIBANK, HINDUNILVR, 
+            ITC, SBIN, BHARTIARTL, KOTAKBANK, LT, AXISBANK, 
+            ASIANPAINT, MARUTI, TITAN, SUNPHARMA, WIPRO, etc.
+
+Bank Nifty: HDFCBANK, ICICIBANK, SBIN, KOTAKBANK, AXISBANK, INDUSINDBK
+
+IT Sector:  TCS, INFY, WIPRO, HCLTECH, TECHM
+
+Pharma:     SUNPHARMA, DRREDDY, CIPLA, DIVISLAB, BIOCON
+
+Add .NS for NSE or .BO for BSE (e.g., RELIANCE.NS, TCS.BO)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚙️ SYSTEM REQUIREMENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Minimum:
+• Python 3.8+
+• 4GB RAM
+• 2GB disk space
+• Internet connection
+
+Recommended:
+• Python 3.10+
+• 8GB RAM
+• GPU (for faster FinBERT)
+• Redis (for caching)
+• PostgreSQL (for persistence)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔧 CONFIGURATION
+═══════════════════════════════════════════════════════════════════════════════
+
+Edit config.py or .env file to customize:
+
+• API_PORT: Server port (default 5000)
+• DEFAULT_EXCHANGE: NSE or BSE
+• CACHE_DURATION: Cache time in seconds
+• PREDICTION_HORIZON: Days ahead to predict
+• RSI_PERIOD: RSI calculation period
+• ENABLE_ML_PREDICTIONS: Enable/disable ML
+• Risk profiles: Conservative, Moderate, Aggressive
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICKSTART.md        Quick setup and basic usage
+README.md            Complete documentation and deployment guide  
+FINBERT_GUIDE.md     FinBERT integration and sentiment analysis
+Code comments        Inline documentation in all Python files
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+ModuleNotFoundError:
+    pip install -r requirements.txt
+
+FinBERT not loading:
+    pip install transformers torch
+
+No stock data:
+    • Check internet connection
+    • Verify stock symbol (add .NS for NSE)
+    • Try: python3 stock_backend.py
+
+Slow performance:
+    • Enable Redis caching
+    • Use GPU for FinBERT
+    • Reduce fetch frequency
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ LEGAL DISCLAIMER
+═══════════════════════════════════════════════════════════════════════════════
+
+This software is for EDUCATIONAL and INFORMATIONAL purposes only.
+
+• Not financial advice
+• Not investment recommendations  
+• Past performance ≠ future results
+• Always do your own research
+• Consult certified financial advisors
+• Be aware of market risks
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📄 LICENSE
+═══════════════════════════════════════════════════════════════════════════════
+
+MIT License - Free for commercial and personal use
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🤝 CONTRIBUTING
+═══════════════════════════════════════════════════════════════════════════════
+
+Contributions welcome! Areas for improvement:
+• Additional data sources
+• More ML models
+• Better UI/UX
+• Mobile app
+• Real-time WebSocket updates
+• Backtesting framework
+• Options trading analysis
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 RESOURCES
+═══════════════════════════════════════════════════════════════════════════════
+
+yfinance:       https://pypi.org/project/yfinance/
+FinBERT:        https://huggingface.co/ProsusAI/finbert
+Transformers:   https://huggingface.co/docs/transformers
+Flask:          https://flask.palletsprojects.com/
+React:          https://react.dev/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 YOU'RE ALL SET!
+═══════════════════════════════════════════════════════════════════════════════
+
+Run ./start.sh and start analyzing stocks with AI-powered insights!
+
+Built with ❤️ for Indian Stock Market Traders
+
+Version: 1.0.0 with FinBERT Integration
+Created: March 2026
+
+═══════════════════════════════════════════════════════════════════════════════
